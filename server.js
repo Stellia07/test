@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const bodyparser = require("body-parser");
 const path = require('path');
 
-const mongoose = require('mongoose');
+const connectDB = require('./server/database/connection');
 
 const app = express();
 
@@ -15,9 +15,7 @@ const PORT = process.env.PORT || 3000;
 app.use(morgan('tiny'));
 
 // mongodb connection
-mongoose.connect('mongodb+srv://test:test@cluster0.9hq1mn8.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB Atlas connected'))
-    .catch(err => console.log(err));
+connectDB();
 
 // parse request to body-parser
 app.use(bodyparser.urlencoded({ extended : true}))
