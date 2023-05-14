@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 app.use(morgan('tiny'));
 
 // mongodb connection
-mongoose.connect(process.env.MONGODB_ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://test:test@cluster0.9hq1mn8.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Atlas connected'))
     .catch(err => console.log(err));
 
