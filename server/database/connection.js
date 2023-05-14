@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
+const username = encodeURIComponent('test');
+const password = encodeURIComponent('test');
+const dbName = 'test';
+const uri = `mongodb+srv://test:test@cluster0.9hq1mn8.mongodb.net/test?retryWrites=true&w=majority`;
 
 const connectDB = async () => {
     try{
         // mongodb connection string
-        const con = await mongoose.connect(process.env.MONGO_URI, {
+        const con = await mongoose.connect(uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
@@ -17,4 +21,4 @@ const connectDB = async () => {
     }
 }
 
-module.exports = connectDB
+module.exports = connectDB;
